@@ -1,0 +1,29 @@
+ <nav class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: rgba(2, 2, 61, 0.445)"
+    >
+      <a class="navbar-brand h1 mb-o" style="margin-left: 10px" href="/home"
+        >Vaccination Registry</a
+      >
+
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dropdown"
+        aria-controls="dropdown"
+        aria-expanded="false"
+        aria-label="Toggle Navigation"
+
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse " style="margin-left:20px;"id="dropdown">
+        <ul class="navbar-nav ms-auto "  >
+
+           <li class="nav-item"><a class="nav-link " href="{{ url_for('add_vaccine') }}">Add Vaccine</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url_for('view_vaccines') }}">Vaccines on Offer</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url_for('user_vacc_details') }}">Vaccination Details</a></li>
+           <li class="nav-item"><a class="nav-link" href="{{ url_for('add_vaccination') }}">Add Vaccination</a></li>
+        </ul>
+      </div>
+    </nav>

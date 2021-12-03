@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap css -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+
+    <!-- Our CSS -->
+    <link  type="text/css" rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"/>
+    {%block title%}<title>Vaccination</title>{%endblock%}
+    
+
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark"
+      style="background-color: rgba(2, 2, 61, 0.445)"
+    >
+      <a class="navbar-brand h1 mb-o" style="margin-left: 10px" href="/home"
+        >Vaccination Registry</a
+      >
+     
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#dropdown"
+        aria-controls="dropdown"
+        aria-expanded="false"
+        aria-label="Toggle Navigation"
+
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse " style="margin-left:20px;" id="dropdown">
+        <ul class="navbar-nav ms-auto "  >
+          {%if current_user.is_authenticated %}
+         <li class="nav-item"><img  class=" nav-profile " src="/static/imgs/{{ current_user.profile_image }}" alt=""></li>
+          <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+          <li class="nav-item"><a href="{{url_for('view_profile')}}" class="nav-link">View Profile</a></li>
+          <li class="nav-item"><a href="{{url_for('view_status_user')}}" class="nav-link">View Vaccination Status</a></li>
+                 {%else%}
+          <li class="nav-item"><a href="{{ url_for('register') }}" class="nav-link">Register</a></li>
+          <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link">Login</a></li>
+           {%endif%}
+        </ul>
+      </div>
+    </nav>
+    {% with messages=get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible">
+                 {{ message }}
+                 <button type="button" class= "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                 </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="container">{% block content %} {%endblock content%}</div>
+
+    <!-- Bootstrap javascript 5.0 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='main.js')}}" rel="javascript"></script>
+</body>
+</html>

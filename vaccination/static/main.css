@@ -1,0 +1,25 @@
+.nav-link {
+  color: red;
+}
+.form-group {
+  margin: 10px;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+
+
+.img-profile {
+  border-radius:50%;
+  object-fit:cover;
+  height:70px;
+  width: 70px;
+}
+.nav-profile {
+  border-radius:50%;
+  object-fit: cover;
+  height:40px;
+  width: 40px;
+}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>Status</title>
+{% endblock %}
+{% block content %}
+     <div class="container ">
+        {% if result %}
+            {% if result.get('remaining') == 0 %}
+            <div class="">
+            <p class=" alert alert-success">You have fully received your JAB, Congratulations for being Patriotic</p>
+              <div class="">
+
+             <div class="shadow-sm  m-auto p-5 bg-white" style="width:40%; text-align: center" >
+
+
+                 <p>Vaccine Taken : <span class="badge alert-success">{{ result.get('Vaccine').upper() }}</span> </p>
+                  <p>Number of doses: <span class="badge alert-info">{{ result.get('dose_req') }}</span></p>
+                  <p>Dose(s) Remaining: <span class="badge alert-info">{{ result.get('remaining') }}</span></p>
+                 <p>First dose on:  <span class="badge alert-info">{{ result.get('first') }}</span></p>
+                  <p>Status <span class="badge alert-success">Completed</span></p>
+             </div>
+             </div>
+            </div>
+             {% elif result.get('remaining')!=0  %}
+             <div class="">
+            <p class=" alert alert-warning">You are partially Vaccinated, Make effor to eliminiate COVID-19</p>
+             <div class="shadow w-md-50 w-lg-25  m-auto p-5 bg-white" style=" text-align: center" >
+                 <p>Vaccine Taken : <span class="badge alert-success">{{ result.get('Vaccine').upper() }}</span> </p>
+                  <p>Number of doses: <span class="badge alert-info">{{ result.get('dose_req') }}</span></p>
+                  <p>Dose(s) Remaining: <span class="badge alert-info">{{ result.get('remaining') }}</span></p>
+                 <p>First dose on:  <span class="badge alert-info">{{ result.get('first') }}</span></p>
+                  <p>Next Dose date <span class="badge alert-danger">{{ result.get('next_dose') }}</span></p>
+             </div>
+             </div>
+             {% endif %}
+            {% else %}
+            <div class="">
+
+            <p class=" alert alert-danger">You have not recieved any Vaccine that's too dangerous!</p>
+            </div>
+           {% endif %}
+
+
+     </div>
+{% endblock %}

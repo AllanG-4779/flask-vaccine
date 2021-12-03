@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ {% include 'partials/admin_head.html' %}
+<body>
+ {% include 'partials/admin_nav.html' %}
+{#  flash message #}
+ {% with messages = get_flashed_messages(with_categories=True)%}
+        {% if messages %}
+           {% for category, message in messages %}
+               <div class="alert alert-{{ category }} alert-dismissible">
+                 <span>{{ message }}</span>
+               <button type="button" class= "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+            {% endfor %}
+      {% endif %}
+    {% endwith %}
+{% block content %}
+
+    <div class="container">
+        <form method="post" class="w-50 m-auto" novalidate>
+        <h1 class="text-center">Add a new Vaccine</h1>
+         {{ form.hidden_tag() }}
+        <div class="form-group">
+         {{ form.name.label(class='') }}
+      {% if form.name.errors %}
+           {% for error in form.name.errors %}
+                {{ form.name(class='form-control is-invalid', autofocus='true')}}
+                  <div class="invalid-feedback"><span>{{ error}}</span></div>
+           {% endfor %}
+          {% else %}
+          {{ form.name(class='form-control', autofocus='true')}}
+      {% endif %}
+
+  </div>
+
+  <div class="form-group">
+  {{ form.origin.label(class='') }}
+      {% if form.origin.errors %}
+           {% for error in form.origin.errors %}
+                {{ form.origin(class='form-control is-invalid', autofocus='true')}}
+                  <div class="invalid-feedback"><span>{{ error}}</span></div>
+           {% endfor %}
+          {% else %}
+          {{ form.origin(class='form-control', autofocus='true')}}
+      {% endif %}
+
+  </div>
+
+  <div class="form-group">
+  {{ form.doses_req.label(class='') }}
+      {% if form.doses_req.errors %}
+           {% for error in form.doses_req.errors %}
+                {{ form.doses_req(class='form-control is-invalid', autofocus='true')}}
+                  <div class="invalid-feedback"><span>{{ error}}</span></div>
+           {% endfor %}
+          {% else %}
+          {{ form.doses_req(class='form-control', autofocus='true')}}
+      {% endif %}
+
+  </div>
+   <div class="form-group">
+  {{ form.dose_time.label(class='') }}
+      {% if form.dose_time.errors %}
+           {% for error in form.doses_req.errors %}
+                {{ form.dose_time(class='form-control is-invalid',  autofocus='true')}}
+                  <div class="invalid-feedback"><span>{{ error}}</span></div>
+           {% endfor %}
+          {% else %}
+          {{ form.dose_time(class='form-control', autofocus='true')}}
+      {% endif %}
+
+  </div>
+        <div class="form-group">
+            {{ form.submit( class="form-control btn btn-primary btn-sm mt-2") }}
+        </div>
+  </form>
+   </div>
+ {% endblock content %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

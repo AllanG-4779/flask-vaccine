@@ -1,0 +1,71 @@
+{%extends 'base.html'%}
+
+{%block title%}
+<title>Update profile</title>
+ {%endblock title%}
+ {%block content%} 
+  <form method="post" novalidate class="w-50 m-auto">
+      <h4 class="text-center">Complete Profile</h4>
+      {{form.hidden_tag()}}
+      <div class="form-group">
+          {{form.firstname.label()}}
+          {% if form.firstname.errors %}
+            {{form.firstname(class="form-control is-invalid")}}
+            {% for error in form.firstname.errors %}
+            <div class="invalid-feedback">
+                {{error}}
+            </div>
+            {%endfor%}
+
+            {%else%}
+            {{form.firstname(class="form-control")}}
+            
+            {%endif%}
+      </div> 
+       <div class="form-group">
+          {{form.lastname.label()}}
+          {% if form.lastname.errors %}
+            {{form.lastname(class="form-control is-invalid")}}
+            {% for error in form.lastname.errors %}
+            <div class="invalid-feedback">
+                {{error}}
+            </div>
+            {%endfor%}
+            {%else%}
+            {{form.lastname(class="form-control")}}
+            
+            {%endif%}
+      </div> 
+       <div class="form-group datepicker">
+          {{form.dob.label()}}
+          {% if form.dob.errors %}
+            {{form.dob(class="form-control is-invalid ")}}
+            {% for error in form.dob.errors %}
+            <div class="invalid-feedback">
+                {{error}}
+            </div>
+            {%endfor%}
+            {%else%}
+            {{form.dob(class="form-control datepicker")}}
+            
+            {%endif%}
+      </div> 
+       <div class="form-group">
+          {{form.county.label()}}
+          {% if form.county.errors %}
+            {{form.county(class="form-control is-invalid")}}
+            {% for error in form.county.errors %}
+            <div class="invalid-feedback">
+                {{error}}
+            </div>
+            {%endfor%}
+            {%else%}
+            {{form.county(class="form-control")}}
+            
+            {%endif%}
+      </div> 
+      <div class="form-group">
+          {{form.complete(class="form-control btn btn-primary")}}
+      </div>
+  </form>
+ {%endblock content%}

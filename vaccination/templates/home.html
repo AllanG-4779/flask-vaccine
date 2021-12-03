@@ -1,0 +1,18 @@
+{%extends 'base.html'%} {%block title%}<title>home</title> {%endblock title%}
+{%block content%}
+
+<div class="w-50 m-auto">
+   <div class="mt-5">
+       <img class="img-profile " src="/static/imgs/{{ current_user.profile_image }}" alt="profile">
+       <p>Name <span  class="  text-danger badge alert-danger  ">{{ current_user.first_name }} {{ current_user.last_name }}</span></p>
+       <p>Email Address <span class="  text-danger badge alert-danger  ">{{ current_user.email }} </span></p>
+       {% if current_user.is_admin %}
+       <p class="badge alert-info">Admin</p>
+       {% else %}
+       <p class="badge alert-info">Regular</p>
+       {% endif %}
+   </div>
+ 
+</div>
+
+{%endblock content%}

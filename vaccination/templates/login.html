@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %}<title>{{ title }}</title>{% endblock
+title %} {% block content %}
+ <div style="width:350px; margin: 10% auto; " class=" border p-2">
+   <h4>Login To View Status & more</h4>
+<form method="POST" novalidate>
+  {{ form.hidden_tag() }}
+
+  <div class="form-group ">
+    {{ form.id.label(class='') }}
+      {% if form.id.errors %}
+          {{ form.id(class='form-control is-invalid', placeholder="someone@yahoo.com", autofocus='true')}}
+          {% for error in form.id.errors %}
+              <div class="invalid-feedback">
+                <span>{{ error }}</span>
+              </div>
+            {% endfor %}
+          {% else %}
+          {{ form.id(class='form-control', placeholder="someone@yahoo.com", autofocus='true')}}
+       {% endif %}
+
+  </div>
+
+  <div class="form-group">
+    {{ form.password.label(class='') }}
+      {% if form.password.errors %}
+          {{ form.password(class=' is-invalid form-control')}}
+          {% for error in form.password.errors %}
+           <div class="invalid-feedback"><span>{{ error }}</span></div>
+          {% endfor %}
+       {% else %}
+        {{ form.password(class='form-control')}}
+      {% endif %}
+  </div>
+    <div class="form-group">
+     {{ form.remember(class='')
+    }}
+        {{ form.remember.label() }}
+  </div>
+
+<div class="form-group">
+     {{ form.submit(class='btn btn-primary form-control')
+    }}
+  </div>
+    <div>Not registered yet? <a style="text-decoration: none;"href="{{ url_for('register') }}">Signup now!</a></div>
+</form>
+    </div>
+{% endblock %}

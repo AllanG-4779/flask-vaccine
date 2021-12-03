@@ -1,0 +1,43 @@
+{% extends 'vaccine.html' %}
+{% block title %}
+    <title>Currenty offered vaccines</title>
+{% endblock title %}
+{% block content %}
+
+
+    {% if vaccines %}
+        <h3 class="text-center">Vaccines Currently on Offer</h3>
+          <div class="container">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                      <th>Count</th>
+                       <th>Name</th>
+                      <th>Country</th>
+                      <th>Doses Required</th>
+                      <th>Time Apart</th>
+                  </tr>
+                 </thead>
+                <tbody>
+                 {% for vaccine in vaccines %}
+                  <tr>
+                      <td>{{ vaccine.id }}</td>
+                      <td>{{vaccine.name}}</td>
+                      <td>{{ vaccine.origin }}</td>
+                      <td>{{ vaccine.doses_req }}</td>
+                      <td>{{ vaccine.dose_time }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+           </div>
+
+        {% else %}
+
+          <h3  style="margin-right:auto; margin-left:auto; margin-top:30vh;" class="alert alert-danger   w-50">No vaccines available now, Click  <a style="text-decoration: none;" class="text-success" href="{{ url_for('add_vaccine') }}">Here</a> to add</h3>
+
+    {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends 'vaccine.html' %}
+{% block title %}<title>Central Vaccination Registry</title>{% endblock %}
+{% block content %}
+<div class="container">
+
+     {% if final_details  %}
+       <table class="table table-bordered table-hover table-responsive">
+           <thead>
+             <tr>
+                 <th>User ID</th>
+                 <th>Vaccine Taken</th>
+                 <th>Vaccination Status</th>
+                 <th>First dose</th>
+             </tr>
+
+           </thead>
+           <tbody>
+             {% for user in final_details %}
+                 <tr>
+                 <td>{{ user.Name}}</td>
+                 <td> {{ user.Vaccine }} </td>
+                     {% if user.status %}
+                         <td class=""><a href="#" class=" nav-link badge alert-success" disabled>Fully Vaccinated</a></td>
+                     {% else %}
+                        <td class=""><a href="{{ url_for("add_vaccination") }}" class=" nav-link badge alert-info" disabled>Record Next dose</a></td>
+                     {% endif %}
+
+                 <td>{{ user.user.dose_date }}</td>
+                 </tr>
+             {% endfor %}
+           </tbody>
+       </table>
+{% endif %}
+
+
+</div>
+{% endblock %}
