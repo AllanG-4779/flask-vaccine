@@ -3,7 +3,7 @@ from wtforms import IntegerField, StringField, PasswordField, SubmitField, Boole
 from wtforms.fields.choices import SelectField
 from wtforms.fields.datetime import DateField
 from wtforms.fields.simple import EmailField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, NumberRange
 
 
 from vaccination.models import User, Vaccine
@@ -61,7 +61,8 @@ class Vaccines(FlaskForm):
     name = StringField('Vaccine Name', validators=[DataRequired(message='Provide a name')])
     origin = StringField("County Origin", validators=[DataRequired(message="Where is the Country coming from?")])
     doses_req = IntegerField("Doses Required", validators=[DataRequired()])
-    dose_time = IntegerField('Days before the next dose', validators=[DataRequired()])
+    dose_time = IntegerField('Days before the next dose', validators=[DataRequired(message="Required"),
+                                                                      NumberRange(min=0, max=4, message="Enter a reasonable number of doses")])
     submit = SubmitField('Save Vaccine')
 
     def validate_name(self, name):

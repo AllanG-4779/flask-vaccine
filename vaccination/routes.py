@@ -107,7 +107,7 @@ def edit_details():
             flash("No selected file", 'info')
             return redirect(url_for('edit_details'))
 
-        if myfile.filename and (myfile.filename):
+        if myfile.filename and myfile.filename.split('.')[-1]  in ALLOWED_EXTENSIONS:
             enc_file = secrets.token_hex(8)
             profile_image = f'{enc_file}{myfile.filename}'
             image = Image.open(myfile)
@@ -228,10 +228,12 @@ def add_vaccine():
         return redirect(url_for('home'))
     form = Forms.Vaccines()
     if form.validate_on_submit():
-        vaccine = Vaccine(name=form.name.data.lower(),
+        vaccine = Vaccine(
+                          name=form.name.data.lower(),
                           origin=form.origin.data,
                           doses_req=form.doses_req.data,
-                          dose_time=form.dose_time.data)
+                          dose_time=form.dose_time.data
+                          )
         db.session.add(vaccine)
         db.session.commit()
         flash("Successfully added", 'success')

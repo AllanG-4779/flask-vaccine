@@ -23,8 +23,9 @@
         <div class="form-group">
          {{ form.name.label(class='') }}
       {% if form.name.errors %}
+        {{ form.name(class='form-control is-invalid', autofocus='true')}}
            {% for error in form.name.errors %}
-                {{ form.name(class='form-control is-invalid', autofocus='true')}}
+
                   <div class="invalid-feedback"><span>{{ error}}</span></div>
            {% endfor %}
           {% else %}
@@ -36,8 +37,9 @@
   <div class="form-group">
   {{ form.origin.label(class='') }}
       {% if form.origin.errors %}
+          {{ form.origin(class='form-control is-invalid', autofocus='true')}}
            {% for error in form.origin.errors %}
-                {{ form.origin(class='form-control is-invalid', autofocus='true')}}
+
                   <div class="invalid-feedback"><span>{{ error}}</span></div>
            {% endfor %}
           {% else %}
@@ -49,9 +51,9 @@
   <div class="form-group">
   {{ form.doses_req.label(class='') }}
       {% if form.doses_req.errors %}
+          {{ form.doses_req(class='form-control is-invalid', autofocus='true')}}
            {% for error in form.doses_req.errors %}
-                {{ form.doses_req(class='form-control is-invalid', autofocus='true')}}
-                  <div class="invalid-feedback"><span>{{ error}}</span></div>
+<div class="invalid-feedback"><span>{{ error}}</span></div>
            {% endfor %}
           {% else %}
           {{ form.doses_req(class='form-control', autofocus='true')}}
@@ -61,8 +63,9 @@
    <div class="form-group">
   {{ form.dose_time.label(class='') }}
       {% if form.dose_time.errors %}
+            {{ form.dose_time(class='form-control is-invalid',  autofocus='true')}}
            {% for error in form.doses_req.errors %}
-                {{ form.dose_time(class='form-control is-invalid',  autofocus='true')}}
+
                   <div class="invalid-feedback"><span>{{ error}}</span></div>
            {% endfor %}
           {% else %}
