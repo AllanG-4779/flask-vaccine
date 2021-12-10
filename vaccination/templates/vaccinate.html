@@ -11,7 +11,7 @@
        {{ form.btnsearch(class="btn btn-sm btn-secondary ") }}
     </form>
         {% if user %}
-            <form action="{{ url_for('add_vaccination') }}" method="post" class="w-25 m-auto">
+            <form action="{{ url_for('admin.add_vaccination') }}" method="post" class="w-25 m-auto">
             <div class="form-group m-2">
              <label for="">Name on File</label>   <input class="form-control" type="text" disabled value="{{ user.first_name  }} {{ user.last_name }}">
 

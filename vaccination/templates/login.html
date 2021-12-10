@@ -41,9 +41,9 @@ title %} {% block content %}
      {{ form.submit(class='btn btn-primary form-control')
     }}
   </div>
-    <div>Not registered yet? <a style="text-decoration: none;"href="{{ url_for('register') }}">Signup now!</a></div>
+    <div>Not registered yet? <a style="text-decoration: none;"href="{{ url_for('regular.register') }}">Signup now!</a></div>
 
-<div><a style="text-decoration: none;"href="{{ url_for('request_pass_reset_token') }}">Forgot password? </a></div>
+<div><a style="text-decoration: none;"href="{{ url_for('auth.request_pass_reset_token') }}">Forgot password? </a></div>
 </form>
     </div>
 {% endblock %}

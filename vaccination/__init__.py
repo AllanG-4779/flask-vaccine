@@ -1,16 +1,16 @@
 import os.path as path
 
 from flask import Flask
-from flask.helpers import url_for
-from flask.scaffold import F
-from flask_sqlalchemy import  SQLAlchemy
+
+from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "myAp838ancdoolk3r3o4038433jflfsdfjdfd844"
-app.config['SQLALCHEMY_DATABASE_URI'] ="mysql://root:cnd80751xh@localhost:3306/vaccination_registry"
-app.config['UPLOAD_FOLDER'] = path.join(path.dirname(path.realpath(__file__)),'static/imgs')
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://root:cnd80751xh@localhost:3306/vaccination_registry"
+app.config['UPLOAD_FOLDER'] = path.join(path.dirname(path.realpath(__file__)), 'static/imgs')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 # set the email
@@ -36,5 +36,11 @@ login_manager.login_message_category = 'info'
 # Make sure the routes are imported after the app is initialized because it is required in the routes file
 # Therfore to avoid the circular imports, use the format specified
 
-from vaccination import routes
+from vaccination.Regular.routes import regular
+from vaccination.Auth.routes import auth
+from vaccination.admin.routes import admin
 
+# register the routes in the modularized packages
+app.register_blueprint(regular)
+app.register_blueprint(auth)
+app.register_blueprint(admin)

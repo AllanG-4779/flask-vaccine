@@ -22,7 +22,7 @@
                      {% if user.status %}
                          <td class=""><a href="#" class=" nav-link badge alert-success" disabled>Fully Vaccinated</a></td>
                      {% else %}
-                        <td class=""><a href="{{ url_for("add_vaccination") }}" class=" nav-link badge alert-info" disabled>Record Next dose</a></td>
+                        <td class=""><a href="{{ url_for("admin.add_vaccination") }}" class=" nav-link badge alert-info" disabled>Record Next dose</a></td>
                      {% endif %}
 
                  <td>{{ user.user.dose_date }}</td>
