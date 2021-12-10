@@ -29,7 +29,7 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 # To enable the flask know where to redirect if login is not fullfilled do the following
-login_manager.login_view = "login"
+login_manager.login_view = "auth.login"
 login_manager.login_message = "You are not logged in"
 login_manager.login_message_category = 'info'
 
