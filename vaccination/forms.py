@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField, PasswordField, SubmitField, BooleanField
 from wtforms.fields.choices import SelectField
 from wtforms.fields.datetime import DateField
+from wtforms.fields.simple import EmailField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 
@@ -72,3 +73,12 @@ class Vaccines(FlaskForm):
 class Search(FlaskForm):
     search = StringField()
     btnsearch = SubmitField("Search")
+
+class EmailReset(FlaskForm):
+    email = EmailField("Your Registered Email" , validators=[DataRequired(), Email()])
+    submit = SubmitField("Send Request")
+    
+class ChangePassword(FlaskForm):
+    password = PasswordField("New Password" , validators=[DataRequired()])
+    confirm = PasswordField('Confirm Password', validators = [EqualTo('password', message="Password do not match")])
+    submit = SubmitField("change password")
